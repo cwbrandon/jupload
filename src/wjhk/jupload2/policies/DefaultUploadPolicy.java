@@ -1560,7 +1560,7 @@ public class DefaultUploadPolicy implements UploadPolicy {
         return this.allowHttpPersistent;
     }
     protected void setIgnoreDirectoryRegex(String ignoreDirectoryRegex) {
-      this.ignoredDirectoryRegex=ignoreDirectoryRegex;
+      this.ignoredDirectoryRegex = ignoreDirectoryRegex;
     }
 
     protected String getIgnoreDirectoryRegex() {
@@ -2216,10 +2216,14 @@ public class DefaultUploadPolicy implements UploadPolicy {
      * @see UploadPolicy#fileFilterAccept(File)
      */
      public boolean directoryFilterAccept(File file) {
+
         if (file.isDirectory()) {
           //
           displayDebug("Directory filter directory: " + file.getName()+"\n regex: "+this.ignoredDirectoryRegex, 10);
-          if (this.ignoredDirectoryRegex.length()>0 && file.getName().matches(this.ignoredDirectoryRegex)){
+          if (ignoredDirectoryRegex != null &&
+              ignoredDirectoryRegex.length() > 0 &&
+              file.getName().matches(this.ignoredDirectoryRegex))
+          {
             displayDebug("Ignored", 10);
               return false;
           }
