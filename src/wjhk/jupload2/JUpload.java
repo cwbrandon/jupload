@@ -1,9 +1,9 @@
 //
 // $Id: JUploadApplet.java 477 2008-06-05 13:06:40Z etienne_sf $
-// 
+//
 // jupload - A file upload applet.
 // Copyright 2007 The JUpload Team
-// 
+//
 // Created: ?
 // Creator: William JinHua Kwong
 // Last modified: $Date: 2008-06-05 06:06:40 -0700 (Thu, 05 Jun 2008) $
@@ -30,9 +30,10 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.Vector;
 
-import javax.swing.JApplet;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import javax.swing.JPanel;
 import wjhk.jupload2.gui.JUploadPanel;
 import wjhk.jupload2.gui.JUploadTextArea;
 import wjhk.jupload2.policies.UploadPolicy;
@@ -54,9 +55,8 @@ import netscape.javascript.JSObject;
  * @author William JinHua Kwong (updated by etienne_sf)
  * @version $Revision: 477 $
  */
-public class JUploadApplet extends JApplet
+public class JUpload extends JPanel
 {
-
     /**
      *
      */
@@ -152,7 +152,6 @@ public class JUploadApplet extends JApplet
     /**
      * @see java.applet.Applet#init()
      */
-    @Override
     public void init() {
 
         try {
@@ -160,7 +159,7 @@ public class JUploadApplet extends JApplet
 
             // Creation of the Panel, containing all GUI objects for upload.
             this.logWindow = new JUploadTextArea(20, 20);
-            //this.uploadPolicy = UploadPolicyFactory.getUploadPolicy(this);
+            this.uploadPolicy = UploadPolicyFactory.getUploadPolicy(this);
 
             this.jUploadPanel = new JUploadPanel(this, this.logWindow,
                     this.uploadPolicy);
@@ -273,9 +272,11 @@ public class JUploadApplet extends JApplet
     public String selectFile() {
         return this.jsHandler.doCommand(JavascriptHandler.COMMAND_SELECT_FILE);
     }
+    /*
     public Object getFile(String file_id) {
         return JSObject.getWindow(this).eval('('+this.jsHandler.doCommand(JavascriptHandler.COMMAND_GET_FILE,file_id)+')');
     }
+    */
     public String cancelUpload() {
         return this.jsHandler.doCommand(JavascriptHandler.COMMAND_CANCEL_UPLOAD);
     }
@@ -285,15 +286,16 @@ public class JUploadApplet extends JApplet
     public String stopUpload() {
         return this.jsHandler.doCommand(JavascriptHandler.COMMAND_STOP_UPLOAD);
     }
+
     /**
      * example public method that can be called by Javascript to get overall status
      *
      * @return Returns the status string. see the swfupload docs for the object definition
      *{@link JavascriptHandler}
-     */
+     *
     public Object getStats() {
         return JSObject.getWindow(this).eval('('+this.jsHandler.doCommand(JavascriptHandler.COMMAND_GET_STATS)+')');
-    }
+    }*/
 
     public String getFileByIndex(String index) {
         return("UNIMPLEMENTED");
@@ -344,7 +346,6 @@ public class JUploadApplet extends JApplet
     /**
      * @see java.applet.Applet#stop()
      */
-    @Override
     public void stop() {
         runUnload();
     }
@@ -359,7 +360,9 @@ public class JUploadApplet extends JApplet
      * @param args Standard argument for main method. Not used.
      */
     public static void main(String[] args) {
-        System.out.println(VERSION.split(" ")[0]);
+        JUpload upload = new JUpload();
+        upload.init();
+        //System.out.println(VERSION.split(" ")[0]);
     }
 
     /**
@@ -435,7 +438,6 @@ public class JUploadApplet extends JApplet
     /**
      * @see java.applet.Applet#destroy()
      */
-    @Override
     public void destroy() {
         runUnload();
     }

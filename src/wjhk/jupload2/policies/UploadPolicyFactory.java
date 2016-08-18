@@ -23,6 +23,7 @@ package wjhk.jupload2.policies;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+import wjhk.jupload2.JUpload;
 import wjhk.jupload2.JUploadApplet;
 
 /**
@@ -49,18 +50,18 @@ public class UploadPolicyFactory {
      * parameters for the uploadPolicy are take from avaiable applet parameters
      * (or from system properties, if it is not run as an applet).
      * 
-     * @param theApplet if not null : use this Applet Parameters. If null, use
+     * @param jUpload if not null : use this Applet Parameters. If null, use
      *            System properties.
      * @return The newly created UploadPolicy.
      * @throws Exception
      */
-    public static UploadPolicy getUploadPolicy(JUploadApplet theApplet)
+    public static UploadPolicy getUploadPolicy(JUpload jUpload)
             throws Exception {
-        UploadPolicy uploadPolicy = theApplet.getUploadPolicy();
+        UploadPolicy uploadPolicy = jUpload.getUploadPolicy();
 
         if (uploadPolicy == null) {
             // Let's create the update policy.
-            String uploadPolicyStr = getParameter(theApplet,
+            String uploadPolicyStr = getParameter(
                     UploadPolicy.PROP_UPLOAD_POLICY,
                     UploadPolicy.DEFAULT_UPLOAD_POLICY, null);
 
@@ -100,7 +101,7 @@ public class UploadPolicyFactory {
                 Constructor<?> constructor = uploadPolicyClass
                         .getConstructor(constructorParameters);
                 Object[] params = {
-                    theApplet
+                    jUpload
                 };
                 action = "newInstance";
                 uploadPolicy = (UploadPolicy) constructor.newInstance(params);
@@ -144,9 +145,7 @@ public class UploadPolicyFactory {
 
     /**
      * Get a String parameter value from applet properties or System properties.
-     * 
-     * @param theApplet The applet which provides the parameter. If null, the
-     *            parameter is retrieved from the system property.
+     *
      * @param key The name of the parameter to fetch.
      * @param def A default value which is used, when the specified parameter is
      *            not set.
@@ -155,94 +154,71 @@ public class UploadPolicyFactory {
      *         parameter was not specified or no such system property exists,
      *         returns the given default value.
      */
-    static public String getParameter(JUploadApplet theApplet, String key,
+    static public String getParameter(String key,
             String def, @SuppressWarnings("unused")
             UploadPolicy uploadPolicy) {
-        if (theApplet == null) {
-            return (System.getProperty(key) != null ? System.getProperty(key)
-                    : def);
-        }
-        return (theApplet.getParameter(key) != null ? theApplet
-                .getParameter(key) : def);
+        return (System.getProperty(key) != null ? System.getProperty(key)
+                : def);
     }
 
     /**
      * Get a String parameter value from applet properties or System properties.
-     * 
-     * @param theApplet The current applet
+     *
      * @param key The parameter name
      * @param def The default value
      * @param uploadPolicy The current upload policy
      * 
      * @return the parameter value, or the default, if the system is not set.
      */
-    static public int getParameter(JUploadApplet theApplet, String key,
+    static public int getParameter(String key,
             int def, UploadPolicy uploadPolicy) {
-        String paramStr;
         String paramDef = Integer.toString(def);
 
         // First, read the parameter as a String
-        if (theApplet == null) {
-            paramStr = System.getProperty(key) != null ? System
-                    .getProperty(key) : paramDef;
-        } else {
-            paramStr = theApplet.getParameter(key) != null ? theApplet
-                    .getParameter(key) : paramDef;
-        }
+        String paramStr = System.getProperty(key) != null ? System
+                .getProperty(key) : paramDef;
 
         return parseInt(paramStr, def, uploadPolicy);
     }
 
     /**
      * Get a String parameter value from applet properties or System properties.
-     * 
-     * @param theApplet The current applet
+     *
      * @param key The parameter name
      * @param def The default value
      * @param uploadPolicy The current upload policy
      * 
      * @return the parameter value, or the default, if the system is not set.
      */
-    static public float getParameter(JUploadApplet theApplet, String key,
+    static public float getParameter(String key,
             float def, UploadPolicy uploadPolicy) {
-        String paramStr;
+
         String paramDef = Float.toString(def);
 
         // First, read the parameter as a String
-        if (theApplet == null) {
-            paramStr = System.getProperty(key) != null ? System
-                    .getProperty(key) : paramDef;
-        } else {
-            paramStr = theApplet.getParameter(key) != null ? theApplet
-                    .getParameter(key) : paramDef;
-        }
+        String paramStr = System.getProperty(key) != null ? System
+                .getProperty(key) : paramDef;
 
         return parseFloat(paramStr, def, uploadPolicy);
     }
 
     /**
      * Get a String parameter value from applet properties or System properties.
-     * 
-     * @param theApplet The current applet
+     *
      * @param key The parameter name
      * @param def The default value
      * @param uploadPolicy The current upload policy
      * 
      * @return the parameter value, or the default, if the system is not set.
      */
-    static public long getParameter(JUploadApplet theApplet, String key,
+    static public long getParameter(String key,
             long def, UploadPolicy uploadPolicy) {
-        String paramStr;
+
         String paramDef = Long.toString(def);
 
         // First, read the parameter as a String
-        if (theApplet == null) {
-            paramStr = System.getProperty(key) != null ? System
+        String paramStr = System.getProperty(key) != null ? System
                     .getProperty(key) : paramDef;
-        } else {
-            paramStr = theApplet.getParameter(key) != null ? theApplet
-                    .getParameter(key) : paramDef;
-        }
 
         return parseLong(paramStr, def, uploadPolicy);
     }// getParameter(int)
@@ -250,27 +226,21 @@ public class UploadPolicyFactory {
     /**
      * Get a boolean parameter value from applet properties or System
      * properties.
-     * 
-     * @param theApplet The current applet
+     *
      * @param key The parameter name
      * @param def The default value
      * @param uploadPolicy The current upload policy
      * 
      * @return the parameter value, or the default, if the system is not set.
      */
-    static public boolean getParameter(JUploadApplet theApplet, String key,
+    static public boolean getParameter(String key,
             boolean def, UploadPolicy uploadPolicy) {
-        String paramStr;
+
         String paramDef = (def ? "true" : "false");
 
         // First, read the parameter as a String
-        if (theApplet == null) {
-            paramStr = System.getProperty(key) != null ? System
-                    .getProperty(key) : paramDef;
-        } else {
-            paramStr = theApplet.getParameter(key) != null ? theApplet
-                    .getParameter(key) : paramDef;
-        }
+        String paramStr = System.getProperty(key) != null ? System
+                .getProperty(key) : paramDef;
 
         return parseBoolean(paramStr, def, uploadPolicy);
     }// getParameter(boolean)

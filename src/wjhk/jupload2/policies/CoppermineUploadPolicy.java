@@ -105,7 +105,7 @@ public class CoppermineUploadPolicy extends PictureUploadPolicy {
         // Let's read the albumId from the applet parameter. It can be unset,
         // but the user must then choose
         // an album before upload.
-        this.albumId = UploadPolicyFactory.getParameter(theApplet,
+        this.albumId = UploadPolicyFactory.getParameter(
                 PROP_ALBUM_ID, DEFAULT_ALBUM_ID, this);
     }
 

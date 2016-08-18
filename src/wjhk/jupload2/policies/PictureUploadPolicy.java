@@ -221,29 +221,29 @@ public class PictureUploadPolicy extends DefaultUploadPolicy implements
 
         // Creation of the PictureFileDataPolicy, from parameters given to the
         // applet, or from default values.
-        setFileChooserImagePreview(UploadPolicyFactory.getParameter(theApplet,
+        setFileChooserImagePreview(UploadPolicyFactory.getParameter(
                 PROP_FILE_CHOOSER_IMAGE_PREVIEW,
                 DEFAULT_FILE_CHOOSER_IMAGE_PREVIEW, this));
-        setHighQualityPreview(UploadPolicyFactory.getParameter(theApplet,
+        setHighQualityPreview(UploadPolicyFactory.getParameter(
                 PROP_HIGH_QUALITY_PREVIEW, DEFAULT_HIGH_QUALITY_PREVIEW, this));
-        setMaxHeight(UploadPolicyFactory.getParameter(theApplet,
+        setMaxHeight(UploadPolicyFactory.getParameter(
                 PROP_MAX_HEIGHT, DEFAULT_MAX_HEIGHT, this));
-        setMaxWidth(UploadPolicyFactory.getParameter(theApplet, PROP_MAX_WIDTH,
+        setMaxWidth(UploadPolicyFactory.getParameter(PROP_MAX_WIDTH,
                 DEFAULT_MAX_WIDTH, this));
         setPictureCompressionQuality(UploadPolicyFactory.getParameter(
-                theApplet, PROP_PICTURE_COMPRESSION_QUALITY,
+                PROP_PICTURE_COMPRESSION_QUALITY,
                 DEFAULT_PICTURE_COMPRESSION_QUALITY, this));
-        setPictureTransmitMetadata(UploadPolicyFactory.getParameter(theApplet,
+        setPictureTransmitMetadata(UploadPolicyFactory.getParameter(
                 PROP_PICTURE_TRANSMIT_METADATA,
                 DEFAULT_PICTURE_TRANSMIT_METADATA, this));
-        setRealMaxHeight(UploadPolicyFactory.getParameter(theApplet,
+        setRealMaxHeight(UploadPolicyFactory.getParameter(
                 PROP_REAL_MAX_HEIGHT, DEFAULT_REAL_MAX_HEIGHT, this));
-        setRealMaxWidth(UploadPolicyFactory.getParameter(theApplet,
+        setRealMaxWidth(UploadPolicyFactory.getParameter(
                 PROP_REAL_MAX_WIDTH, DEFAULT_REAL_MAX_WIDTH, this));
-        setStoreBufferedImage(UploadPolicyFactory.getParameter(theApplet,
+        setStoreBufferedImage(UploadPolicyFactory.getParameter(
                 PROP_STORE_BUFFERED_IMAGE, DEFAULT_STORE_BUFFERED_IMAGE, this));
         setTargetPictureFormat(UploadPolicyFactory
-                .getParameter(theApplet, PROP_TARGET_PICTURE_FORMAT,
+                .getParameter(PROP_TARGET_PICTURE_FORMAT,
                         DEFAULT_TARGET_PICTURE_FORMAT, this));
 
         // The UploadPolicyFactory class will call displayParameterStatus(), so

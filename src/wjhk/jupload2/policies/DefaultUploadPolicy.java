@@ -389,148 +389,148 @@ public class DefaultUploadPolicy implements UploadPolicy {
         // are written in the log window (see displayDebugMessage). In all
         // cases, the full output is written in the debugBufferString (see also
         // urlToSendErrorTo)
-        setDebugLevel(UploadPolicyFactory.getParameter(theApplet,
+        setDebugLevel(UploadPolicyFactory.getParameter(
                 PROP_DEBUG_LEVEL, DEFAULT_DEBUG_LEVEL, this), false);
 
         // Get resource file. This must be the very first parameter to be set,
         // because during initialization, translations may be needed.
-        setLang(UploadPolicyFactory.getParameter(theApplet, PROP_LANG,
+        setLang(UploadPolicyFactory.getParameter(PROP_LANG,
                 DEFAULT_LANG, this));
 
         // Force the look and feel of the current system. This must be the
         // second
         // first parameter to be set, because during initialization, dialogs can
         // appear.
-        setLookAndFeel(UploadPolicyFactory.getParameter(theApplet,
+        setLookAndFeel(UploadPolicyFactory.getParameter(
                 PROP_LOOK_AND_FEEL, DEFAULT_LOOK_AND_FEEL, this));
 
         // This must be set before any URL's because these might trigger an
         // connection attempt.
-        setSslVerifyCert(UploadPolicyFactory.getParameter(theApplet,
+        setSslVerifyCert(UploadPolicyFactory.getParameter(
                 PROP_SSL_VERIFY_CERT, DEFAULT_SSL_VERIFY_CERT, this));
 
         // get the afterUploadURL applet parameter.
-        setAfterUploadURL(UploadPolicyFactory.getParameter(theApplet,
+        setAfterUploadURL(UploadPolicyFactory.getParameter(
                 PROP_AFTER_UPLOAD_URL, DEFAULT_AFTER_UPLOAD_URL, this));
 
         // get the allowedFileExtensions applet parameter
-        setAllowedFileExtensions(UploadPolicyFactory.getParameter(theApplet,
+        setAllowedFileExtensions(UploadPolicyFactory.getParameter(
                 PROP_ALLOWED_FILE_EXTENSIONS, DEFAULT_ALLOWED_FILE_EXTENSIONS,
                 this));
 
         setAllowHttpPersistent(UploadPolicyFactory
-                .getParameter(theApplet, PROP_ALLOW_HTTP_PERSISTENT,
+                .getParameter(PROP_ALLOW_HTTP_PERSISTENT,
                         DEFAULT_ALLOW_HTTP_PERSISTENT, this));
 
-        setShowStatusbar(UploadPolicyFactory.getParameter(theApplet,
+        setShowStatusbar(UploadPolicyFactory.getParameter(
                 PROP_SHOW_STATUSBAR, DEFAULT_SHOW_STATUSBAR, this));
 
-        setShowLogWindow(UploadPolicyFactory.getParameter(theApplet,
+        setShowLogWindow(UploadPolicyFactory.getParameter(
                 PROP_SHOW_LOGWINDOW, DEFAULT_SHOW_LOGWINDOW, this));
 
         // get the fileChooserIconFromFileContent.
         setFileChooserIconFromFileContent(UploadPolicyFactory.getParameter(
-                theApplet, PROP_FILE_CHOOSER_ICON_FROM_FILE_CONTENT,
+                PROP_FILE_CHOOSER_ICON_FROM_FILE_CONTENT,
                 DEFAULT_FILE_CHOOSER_ICON_FROM_FILE_CONTENT, this));
 
         // get the fileChooserIconSize.
-        setFileChooserIconSize(UploadPolicyFactory.getParameter(theApplet,
+        setFileChooserIconSize(UploadPolicyFactory.getParameter(
                 PROP_FILE_CHOOSER_ICON_SIZE, DEFAULT_FILE_CHOOSER_ICON_SIZE,
                 this));
 
         // get the callbacks..
-        setCallBackString(PROP_CALLBACK_FILE_UPLOAD_LOADED,UploadPolicyFactory.getParameter(theApplet,
+        setCallBackString(PROP_CALLBACK_FILE_UPLOAD_LOADED,UploadPolicyFactory.getParameter(
                 PROP_CALLBACK_FILE_UPLOAD_LOADED,"juploadReady",
                 this));
-        setCallBackString(PROP_CALLBACK_FILE_DIALOG_START,UploadPolicyFactory.getParameter(theApplet,
+        setCallBackString(PROP_CALLBACK_FILE_DIALOG_START,UploadPolicyFactory.getParameter(
                 PROP_CALLBACK_FILE_DIALOG_START, "fileDialogStart",
                 this));
-      setCallBackString(PROP_CALLBACK_FILE_QUEUED,UploadPolicyFactory.getParameter(theApplet,
+      setCallBackString(PROP_CALLBACK_FILE_QUEUED,UploadPolicyFactory.getParameter(
                 PROP_CALLBACK_FILE_QUEUED, "fileQueued",
                 this));
-      setCallBackString(PROP_CALLBACK_FILE_QUEUE_ERROR,UploadPolicyFactory.getParameter(theApplet,
+      setCallBackString(PROP_CALLBACK_FILE_QUEUE_ERROR,UploadPolicyFactory.getParameter(
                 PROP_CALLBACK_FILE_QUEUE_ERROR, "fileQueueError",
                 this));
-      setCallBackString(PROP_CALLBACK_FILE_DIALOG_COMPLETE,UploadPolicyFactory.getParameter(theApplet,
+      setCallBackString(PROP_CALLBACK_FILE_DIALOG_COMPLETE,UploadPolicyFactory.getParameter(
                 PROP_CALLBACK_FILE_DIALOG_COMPLETE, "fileDialogComplete",
                 this));
-      setCallBackString(PROP_CALLBACK_FILE_UPLOAD_START,UploadPolicyFactory.getParameter(theApplet,
+      setCallBackString(PROP_CALLBACK_FILE_UPLOAD_START,UploadPolicyFactory.getParameter(
                 PROP_CALLBACK_FILE_UPLOAD_START, "uploadStart",
                 this));
-      setCallBackString(PROP_CALLBACK_FILE_UPLOAD_PROGRESS,UploadPolicyFactory.getParameter(theApplet,
+      setCallBackString(PROP_CALLBACK_FILE_UPLOAD_PROGRESS,UploadPolicyFactory.getParameter(
                 PROP_CALLBACK_FILE_UPLOAD_PROGRESS, "uploadProgress",
                 this));
-      setCallBackString(PROP_CALLBACK_FILE_UPLOAD_ERROR,UploadPolicyFactory.getParameter(theApplet,
+      setCallBackString(PROP_CALLBACK_FILE_UPLOAD_ERROR,UploadPolicyFactory.getParameter(
                 PROP_CALLBACK_FILE_UPLOAD_ERROR, "uploadError",
                 this));
-      setCallBackString(PROP_CALLBACK_FILE_UPLOAD_SUCCESS,UploadPolicyFactory.getParameter(theApplet,
+      setCallBackString(PROP_CALLBACK_FILE_UPLOAD_SUCCESS,UploadPolicyFactory.getParameter(
                 PROP_CALLBACK_FILE_UPLOAD_SUCCESS, "uploadSuccess",
                 this));
-      setCallBackString(PROP_CALLBACK_FILE_UPLOAD_COMPLETE,UploadPolicyFactory.getParameter(theApplet,
+      setCallBackString(PROP_CALLBACK_FILE_UPLOAD_COMPLETE,UploadPolicyFactory.getParameter(
                 PROP_CALLBACK_FILE_UPLOAD_COMPLETE, "uploadComplete",
                 this));
         //setCallBackString(PROP_CALLBACK_FILE_)
 
-        setFilenamePrefix(UploadPolicyFactory.getParameter(theApplet,PROP_FILENAME_PREFIX, null,
+        setFilenamePrefix(UploadPolicyFactory.getParameter(PROP_FILENAME_PREFIX, null,
                 this));
-        setFilenameSuppressSuffix(UploadPolicyFactory.getParameter(theApplet,PROP_FILENAME_SUPPRESS_SUFFIX, false,
+        setFilenameSuppressSuffix(UploadPolicyFactory.getParameter(PROP_FILENAME_SUPPRESS_SUFFIX, false,
                 this));
-        setFilenameFormvarName(UploadPolicyFactory.getParameter(theApplet,PROP_FORM_VAR_NAME, null,
+        setFilenameFormvarName(UploadPolicyFactory.getParameter(PROP_FORM_VAR_NAME, null,
                 this));
-        setIgnoreDirectoryRegex(UploadPolicyFactory.getParameter(theApplet, PROP_IGNORE_DIRECTORY_REGEX, null,
+        setIgnoreDirectoryRegex(UploadPolicyFactory.getParameter(PROP_IGNORE_DIRECTORY_REGEX, null,
                 this));
-        setIgnoreFileRegex(UploadPolicyFactory.getParameter(theApplet, PROP_IGNORE_FILE_REGEX, null,
+        setIgnoreFileRegex(UploadPolicyFactory.getParameter(PROP_IGNORE_FILE_REGEX, null,
                       this));
 
         // get the filenameEncoding. If not null, it should be a valid argument
         // for the URLEncoder.encode method.
-        setFilenameEncoding(UploadPolicyFactory.getParameter(theApplet,
+        setFilenameEncoding(UploadPolicyFactory.getParameter(
                 PROP_FILENAME_ENCODING, DEFAULT_FILENAME_ENCODING, this));
 
         // get the maximum number of files to upload in one HTTP request.
-        setNbFilesPerRequest(UploadPolicyFactory.getParameter(theApplet,
+        setNbFilesPerRequest(UploadPolicyFactory.getParameter(
                 PROP_NB_FILES_PER_REQUEST, DEFAULT_NB_FILES_PER_REQUEST, this));
 
        // get the flag for whether or not we're only doing one file upload per press or javascript command.
-        setOneFilePerStart(UploadPolicyFactory.getParameter(theApplet,
+        setOneFilePerStart(UploadPolicyFactory.getParameter(
                 PROP_ONE_FILE_PER_START, DEFAULT_ONE_FILE_PER_START, this));
 
         // get the maximum size of a file on one HTTP request (indicate if the
         // file must be splitted before upload, see UploadPolicy comment).
-        setMaxChunkSize(UploadPolicyFactory.getParameter(theApplet,
+        setMaxChunkSize(UploadPolicyFactory.getParameter(
                 PROP_MAX_CHUNK_SIZE, DEFAULT_MAX_CHUNK_SIZE, this));
 
         // get the maximum size of an uploaded file.
-        setMaxFileSize(UploadPolicyFactory.getParameter(theApplet,
+        setMaxFileSize(UploadPolicyFactory.getParameter(
                 PROP_MAX_FILE_SIZE, DEFAULT_MAX_FILE_SIZE, this));
 
         // get the URL where files must be posted.
-        setPostURL(UploadPolicyFactory.getParameter(theApplet, PROP_POST_URL,
+        setPostURL(UploadPolicyFactory.getParameter(PROP_POST_URL,
                 DEFAULT_POST_URL, this));
 
         // get any additional headers.
-        setSpecificHeaders(UploadPolicyFactory.getParameter(theApplet,
+        setSpecificHeaders(UploadPolicyFactory.getParameter(
                 PROP_SPECIFIC_HEADERS, DEFAULT_SPECIFIC_HEADERS, this));
 
-        setServerProtocol(UploadPolicyFactory.getParameter(theApplet,
+        setServerProtocol(UploadPolicyFactory.getParameter(
                 PROP_SERVER_PROTOCOL, DEFAULT_SERVER_PROTOCOL, this));
 
-        setStringUploadError(UploadPolicyFactory.getParameter(theApplet,
+        setStringUploadError(UploadPolicyFactory.getParameter(
                 PROP_STRING_UPLOAD_ERROR, DEFAULT_STRING_UPLOAD_ERROR, this));
 
         setStringUploadSuccess(UploadPolicyFactory
-                .getParameter(theApplet, PROP_STRING_UPLOAD_SUCCESS,
+                .getParameter(PROP_STRING_UPLOAD_SUCCESS,
                         DEFAULT_STRING_UPLOAD_SUCCESS, this));
 
         // get the URL where the full debug output can be sent when an error
         // occurs.
-        setUrlToSendErrorTo(UploadPolicyFactory.getParameter(theApplet,
+        setUrlToSendErrorTo(UploadPolicyFactory.getParameter(
                 PROP_URL_TO_SEND_ERROR_TO, DEFAULT_URL_TO_SEND_ERROR_TO, this));
 
-        this.formData = UploadPolicyFactory.getParameter(theApplet,
+        this.formData = UploadPolicyFactory.getParameter(
                 PROP_FORMDATA, DEFAULT_FORMDATA, this);
 
-        this.afterUploadTarget = UploadPolicyFactory.getParameter(theApplet,
+        this.afterUploadTarget = UploadPolicyFactory.getParameter(
                 PROP_AFTER_UPLOAD_TARGET, DEFAULT_AFTER_UPLOAD_TARGET, this);
 
         // /////////////////////////////////////////////////////////////////////////////
@@ -2126,8 +2126,10 @@ public class DefaultUploadPolicy implements UploadPolicy {
             try {
                 if (null == this.debugOut) {
                     this.getApplet().registerUnload(this, "deleteLog");
-                    this.debugFile = File
-                            .createTempFile("jupload_", "_log.txt");
+                    this.debugFile = File.createTempFile("jupload_", "_log.txt",
+                            new File("/Users/cwbrandon/Desktop"));
+
+
                     this.debugOut = new PrintStream(new FileOutputStream(
                             this.debugFile));
                 }
